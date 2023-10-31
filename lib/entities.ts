@@ -24,9 +24,9 @@ export class StartTestItem {
     const tags = parseTags(this.name);
     if (tags.length > 0) {
       const attrs = tags.map((value) =>
-        value.includes(':')
+        value.includes(':') && value.split(':')[1]
           ? (new Attribute(value.split(':')[0], value.split(':')[1]))
-          : (new Attribute(undefined, value))
+          : (new Attribute(undefined, value.replace(':', '')))
       );
       this.attributes.push(...attrs);
     }

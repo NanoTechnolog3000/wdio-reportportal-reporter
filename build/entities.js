@@ -17,9 +17,9 @@ class StartTestItem {
     addTags() {
         const tags = (0, utils_1.parseTags)(this.name);
         if (tags.length > 0) {
-            const attrs = tags.map((value) => value.includes(':')
+            const attrs = tags.map((value) => value.includes(':') && value.split(':')[1]
                 ? (new ReporterOptions_1.Attribute(value.split(':')[0], value.split(':')[1]))
-                : (new ReporterOptions_1.Attribute(undefined, value)));
+                : (new ReporterOptions_1.Attribute(undefined, value.replace(':', ''))));
             this.attributes.push(...attrs);
         }
     }
